@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/JobMatch.css">
+    <title>JobMatch - Upload Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles for upload success message */
+        .upload-message {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .upload-message.success {
+            background-color: #e8f7f0;
+            color: #27ae60;
+        }
+        
+        .upload-message.error {
+            background-color: #fdedec;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="asset/images/JobMatch1.jpg" alt="JobMatch Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="upload.html" class="active">Upload</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="admin.html">Admin Panel</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <!-- Auth buttons will be dynamically inserted here -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>Get Started</h3>
+                <p>Upload your resume to begin the matching process</p>
+            </div>
+            <div class="upload-container">
+                <div class="upload-box">
+                    <h4>Upload Resume</h4>
+                    <p>Submit your resume along with your details for AI analysis and matching</p>
+                    
+                    <form id="applicantForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company/Organization</label>
+                            <select id="company" name="company" class="form-control" required>
+                                <option value="">Select company/organization</option>
+                                <option value="tech_solutions">Tech Solutions Inc.</option>
+                                <option value="global_finance">Global Finance</option>
+                                <option value="healthcare_plus">Healthcare Plus</option>
+                                <option value="education_group">Education Group</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="jobType">Job Type</label>
+                            <select id="jobType" name="jobType" class="form-control" required>
+                                <option value="">Select job type</option>
+                                <option value="full_time">Full Time</option>
+                                <option value="part_time">Part Time</option>
+                                <option value="contract">Contract</option>
+                                <option value="internship">Internship</option>
+                                <option value="remote">Remote</option>
+                            </select>
+                        </div>
+                        
+                        <div class="upload-area">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p class="upload-text">Drag & Drop your resume here or click to browse</p>
+                            <input type="file" class="upload-input" name="resume" accept=".pdf,.doc,.docx" required>
+                        </div>
+                        
+                        <div id="uploadMessage" class="upload-message"></div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>What Happens Next?</h3>
+                <p>Our AI-powered system will process your resume in a few simple steps</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Resume Analysis</h4>
+                        <p>Our AI system will analyze your resume to extract skills, experience, and qualifications</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Job Matching</h4>
+                        <p>Your profile will be matched against available job positions based on requirements</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Recruiter Review</h4>
+                        <p>Top-matched resumes are reviewed by recruiters for final selection</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Interview Invitation</h4>
+                        <p>If selected, you'll receive an invitation for the next steps in the hiring process</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h5>JobMatch</h5>
+                    <p>An AI-powered recruitment system designed to streamline the hiring process and match the right candidates with the right jobs.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="upload.html">Upload</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="admin.html">Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>For Employers</h5>
+                    <ul class="footer-links">
+                        <li><a href="post-job.html">Post a Job</a></li>
+                        <li><a href="search-candidates.html">Search Candidates</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 JobMatch. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
+        import { getCurrentUser } from './auth.js';
+        import { updateHeader } from './header.js';
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Update header auth status
+            updateHeader();
+            
+            // Check if user is logged in
+            const { user } = await getCurrentUser();
+            
+            if (!user) {
+                // Redirect to login if not logged in
+                window.location.href = 'login.html?redirect=upload.html';
+                return;
+            }
+            
+            // Automatically fill name if available
+            const { profile } = await getCurrentUser();
+            if (profile && profile.first_name && profile.last_name) {
+                document.getElementById('fullName').value = `${profile.first_name} ${profile.last_name}`;
+            }
+            
+            // File upload interaction
+            const uploadArea = document.querySelector('.upload-area');
+            const fileInput = document.querySelector('.upload-input');
+            const uploadMessage = document.getElementById('uploadMessage');
+
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.classList.add('active');
+            });
+
+            uploadArea.addEventListener('dragleave', function() {
+                uploadArea.classList.remove('active');
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    handleFileSelect();
+                }
+                
+                uploadArea.classList.remove('active');
+            });
+
+            fileInput.addEventListener('change', handleFileSelect);
+
+            function handleFileSelect() {
+                if (fileInput.files.length > 0) {
+                    const fileName = fileInput.files[0].name;
+                    document.querySelector('.upload-text').textContent = `Selected file: ${fileName}`;
+                    uploadArea.classList.add('active');
+                }
+            }
+
+            // Form submission
+            const form = document.getElementById('applicantForm');
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Disable form
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+                
+                try {
+                    const formData = new FormData(form);
+                    const file = formData.get('resume');
+                    
+                    // Upload file to Supabase Storage
+                    const fileName = `${Date.now()}_${file.name}`;
+                    const { data: fileData, error: fileError } = await supabase.storage
+                        .from('resumes')
+                        .upload(`public/${user.id}/${fileName}`, file);
+                    
+                    if (fileError) throw fileError;
+                    
+                    // Get the public URL
+                    const { data: { publicUrl } } = supabase.storage
+                        .from('resumes')
+                        .getPublicUrl(`public/${user.id}/${fileName}`);
+                    
+                    // Save resume info to database
+                    const { error: resumeError } = await supabase
+                        .from('resumes')
+                        .insert({
+                            user_id: user.id,
+                            file_url: publicUrl,
+                            created_at: new Date()
+                        });
+                    
+                    if (resumeError) throw resumeError;
+                    
+                    // Show success message
+                    showMessage('Resume submitted successfully! You will be notified of any matches.', 'success');
+                    
+                    // Reset form
+                    form.reset();
+                    document.querySelector('.upload-text').textContent = 'Drag & Drop your resume here or click to browse';
+                    uploadArea.classList.remove('active');
+                    
+                } catch (error) {
+                    console.error('Error submitting resume:', error.message);
+                    showMessage(`Error submitting resume: ${error.message}`, 'error');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                }
+            });
+            
+            function showMessage(message, type) {
+                uploadMessage.textContent = message;
+                uploadMessage.className = `upload-message ${type}`;
+                uploadMessage.style.display = 'block';
+                
+                // Scroll to message
+                uploadMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Hide message after a delay
+                setTimeout(() => {
+                    uploadMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>

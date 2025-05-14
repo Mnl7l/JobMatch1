@@ -1,0 +1,382 @@
+/* Login.css - Complete stylesheet for authentication pages */
+
+/* Base container styles */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+  background-color: #f5f8fa;
+}
+
+.auth-form-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.auth-form-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Error message styles */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #c62828;
+}
+
+/* Success message styles */
+.success-message {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #2e7d32;
+}
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1e6091;
+  box-shadow: 0 0 0 2px rgba(30, 96, 145, 0.1);
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* Form row for side-by-side inputs */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Remember me and forgot password row */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 0.5rem;
+}
+
+.forgot-password a {
+  color: #1e6091;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+  color: #164e75;
+  text-decoration: underline;
+}
+
+/* Terms and conditions checkbox */
+.terms {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.terms input {
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.terms a {
+  color: #1e6091;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.terms a:hover {
+  color: #164e75;
+  text-decoration: underline;
+}
+
+/* Button styles */
+.form-actions {
+  margin-top: 2rem;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: #1e6091;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+  background-color: #164e75;
+}
+
+.auth-button:disabled {
+  background-color: #a1bdec;
+  cursor: not-allowed;
+}
+
+/* Links beneath the form */
+.auth-link,
+.register-link,
+.login-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.auth-link a,
+.register-link a,
+.login-link a {
+  color: #1e6091;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.auth-link a:hover,
+.register-link a:hover,
+.login-link a:hover {
+  color: #164e75;
+  text-decoration: underline;
+}
+
+/* Reset password link */
+.reset-password-link {
+  background: none;
+  border: none;
+  color: #1e6091;
+  padding: 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.reset-password-link:hover {
+  color: #164e75;
+}
+
+/* Social login buttons */
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #f5f8fa;
+  color: #555;
+  border: 1px solid #ddd;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  background-color: #e8f1f8;
+}
+
+.social-btn.google:hover {
+  color: #dd4b39;
+  border-color: #dd4b39;
+}
+
+.social-btn.facebook:hover {
+  color: #3b5998;
+  border-color: #3b5998;
+}
+
+.social-btn.linkedin:hover {
+  color: #0077b5;
+  border-color: #0077b5;
+}
+
+/* Or divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.auth-divider span {
+  padding: 0 1rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Role selection styles */
+.role-selection h4 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.account-type {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.account-type-option {
+  flex: 1;
+  padding: 1.5rem;
+  border: 2px solid #ecf0f1;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.account-type-option:hover {
+  border-color: #1e6091;
+  background-color: rgba(30, 96, 145, 0.05);
+}
+
+.account-type-option.active {
+  border-color: #1e6091;
+  background-color: rgba(30, 96, 145, 0.1);
+}
+
+.account-type-option i {
+  font-size: 2rem;
+  color: #1e6091;
+  margin-bottom: 1rem;
+}
+
+.account-type-option h5 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.account-type-option p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* Hide the actual radio button but keep it accessible */
+.role-radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Add visual indicator for selected role */
+.account-type-option.active:after {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #1e6091;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  .auth-form-container {
+    padding: 1.5rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .account-type {
+    flex-direction: column;
+  }
+  
+  .remember-forgot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .social-login {
+    flex-wrap: wrap;
+  }
+}

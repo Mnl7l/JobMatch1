@@ -1,0 +1,614 @@
+/* src/components/CandidateEvaluation.css */
+
+.candidate-evaluation-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header and Candidate Info */
+.candidate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.candidate-header h2 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.8rem;
+}
+
+.analyze-button {
+  background-color: #4c51bf;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.analyze-button:hover {
+  background-color: #434190;
+}
+
+.analyze-button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.analyze-button::before {
+  content: '🔍';
+  margin-right: 8px;
+}
+
+.candidate-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #f7fafc;
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 4px;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+/* AI Loading Indicator */
+.ai-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f7fafc;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.ai-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-left-color: #4c51bf;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* AI Analysis Section */
+.ai-analysis-section {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 30px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ai-analysis-section h3 {
+  margin-top: 0;
+  color: #2d3748;
+  font-size: 1.5rem;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+/* Match Score */
+.match-score-container {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.match-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.match-score-header h4 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.25rem;
+}
+
+.match-percentage {
+  background-color: #4c51bf;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match-score-bar {
+  height: 15px;
+  background-color: #edf2f7;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.match-score-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.match-summary {
+  font-size: 1.05rem;
+  color: #4a5568;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Analysis Sections */
+.analysis-section {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.analysis-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.analysis-section h4 {
+  margin-top: 0;
+  color: #2d3748;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* Skills Analysis */
+.skills-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skill-match-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.skill-category h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+.skill-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-bar {
+  flex-grow: 1;
+  height: 10px;
+  background-color: #edf2f7;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background-color: #4c51bf;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.skill-percentage {
+  font-weight: 600;
+  color: #2d3748;
+  min-width: 40px;
+  text-align: right;
+}
+
+.matching-skills, .missing-skills {
+  margin-top: 15px;
+}
+
+.matching-skills h5, .missing-skills h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  background-color: #edf2f7;
+  color: #4a5568;
+}
+
+.skill-tag.matching {
+  background-color: #c6f6d5;
+  color: #276749;
+}
+
+.skill-tag.missing {
+  background-color: #fed7d7;
+  color: #c53030;
+}
+
+/* Experience Analysis */
+.experience-breakdown {
+  padding: 15px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+.experience-bar-container {
+  margin-bottom: 15px;
+}
+
+.experience-bar-container h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+.experience-bar {
+  height: 10px;
+  background-color: #edf2f7;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.experience-bar-fill {
+  height: 100%;
+  background-color: #4c51bf;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.experience-percentage {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.experience-analysis {
+  margin-bottom: 0;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+/* Strengths and Weaknesses */
+.strengths-weaknesses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.strengths, .weaknesses {
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.strengths {
+  background-color: #f0fff4;
+  border: 1px solid #c6f6d5;
+}
+
+.weaknesses {
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+}
+
+.strengths h5, .weaknesses h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.strengths h5 {
+  color: #276749;
+}
+
+.weaknesses h5 {
+  color: #c53030;
+}
+
+.strengths ul, .weaknesses ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.strengths li, .weaknesses li {
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+/* Interview Questions */
+.interview-questions {
+  padding: 15px;
+  background-color: #ebf4ff;
+  border-radius: 8px;
+  border: 1px solid #c3dafe;
+}
+
+.recommendation-intro {
+  margin-top: 0;
+  color: #4a5568;
+  margin-bottom: 10px;
+}
+
+.interview-questions ul {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.interview-questions li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Resume Section */
+.resume-section {
+  margin-top: 30px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 25px;
+  background-color: white;
+}
+
+.resume-section h3 {
+  margin-top: 0;
+  color: #2d3748;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.resume-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.resume-section-item {
+  margin-bottom: 20px;
+}
+
+.resume-section-item h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2d3748;
+  font-size: 1.2rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+/* Skills Container */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skill-group h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+/* Experience Items */
+.experience-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience-item {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.experience-header h5 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.05rem;
+}
+
+.company-name {
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.experience-period {
+  display: flex;
+  justify-content: space-between;
+  color: #718096;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.experience-location {
+  color: #718096;
+}
+
+.experience-description {
+  margin: 0;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+/* Education Items */
+.education-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.education-item {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.education-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.education-header h5 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.05rem;
+}
+
+.institution-name {
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.education-period {
+  display: flex;
+  justify-content: space-between;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.education-gpa {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+/* No Resume Message */
+.no-resume-message {
+  padding: 20px;
+  background-color: #f7fafc;
+  border-radius: 8px;
+  color: #718096;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Loading and Error States */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.error-message {
+  padding: 20px;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 8px;
+  color: #c53030;
+  text-align: center;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.not-found-message {
+  padding: 30px;
+  background-color: #f7fafc;
+  border-radius: 8px;
+  color: #4a5568;
+  text-align: center;
+  margin: 50px auto;
+  max-width: 600px;
+  font-size: 1.2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .candidate-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .skill-match-categories {
+    grid-template-columns: 1fr;
+  }
+  
+  .strengths-weaknesses {
+    grid-template-columns: 1fr;
+  }
+  
+  .experience-header {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .education-header {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

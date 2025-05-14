@@ -1,0 +1,45 @@
+/* Additional CSS for ResumeUpload.css - Just the fixes */
+
+/* Ensure the active state is properly shown for the file upload area */
+.file-upload-area.active {
+  background-color: rgba(30, 96, 145, 0.15);
+  border-color: #2980b9;
+}
+
+/* Ensure the file input is properly hidden but accessible */
+.file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Add hover state indication for better user experience */
+.file-upload-area:hover {
+  background-color: rgba(30, 96, 145, 0.1);
+}
+
+/* Make sure the upload area is properly sized and has pointer cursor */
+.file-upload-area {
+  min-height: 200px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Enhance the file processing spinner */
+.ai-loading .spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-left-color: #1e6091;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

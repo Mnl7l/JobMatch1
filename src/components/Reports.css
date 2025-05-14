@@ -1,0 +1,524 @@
+/* Reports.css - Styling for the recruitment reports component */
+
+.reports-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f5f8fa;
+  min-height: calc(100vh - 100px);
+}
+
+.reports-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.reports-header h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.reports-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+/* Filters Section */
+.filters-section {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.filters-section h3 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: #1e6091;
+  box-shadow: 0 0 0 2px rgba(30, 96, 145, 0.1);
+}
+
+.filters-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.generate-report-btn {
+  background-color: #1e6091;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.generate-report-btn:hover:not(:disabled) {
+  background-color: #174d75;
+}
+
+.generate-report-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Error Messages */
+.error-message {
+  background-color: #fdedec;
+  color: #e74c3c;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #e74c3c;
+}
+
+/* Report Results */
+.report-results {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Export Section */
+.export-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.export-section h3 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.export-options {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.export-options select {
+  padding: 0.6rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.export-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.export-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Report Sections */
+.report-section {
+  margin-bottom: 3rem;
+}
+
+.report-section h3 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 0.5rem;
+}
+
+/* Statistics Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e6091;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: #7f8c8d;
+  font-size: 0.95rem;
+}
+
+/* Candidates Table */
+.candidates-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.candidates-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.candidates-table th,
+.candidates-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.candidates-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.candidates-table tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.candidates-table tr:hover {
+  background-color: #f5f8fa;
+}
+
+.match-score {
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.match-score.high {
+  background-color: #e8f7f0;
+  color: #27ae60;
+}
+
+.match-score.medium {
+  background-color: #fef5e7;
+  color: #f39c12;
+}
+
+.match-score.low {
+  background-color: #fdedec;
+  color: #e74c3c;
+}
+
+/* Job Breakdown */
+.jobs-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.job-breakdown-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+}
+
+.job-breakdown-card h4 {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.job-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.job-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-stat .stat-label {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.job-stat .stat-value {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Skills Analysis */
+.skills-analysis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+}
+
+.skill-category h4 {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.skill-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skill-name {
+  flex: 0 0 120px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+}
+
+.bar-container {
+  flex: 1;
+  position: relative;
+  height: 24px;
+  background-color: #ecf0f1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background-color: #3498db;
+  border-radius: 12px;
+  transition: width 0.5s ease;
+}
+
+.skill-count {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Analysis Row */
+.analysis-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.analysis-section {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+}
+
+.analysis-section h3 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.distribution-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.distribution-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.distribution-label {
+  flex: 0 0 100px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  text-transform: capitalize;
+}
+
+.distribution-bar {
+  flex: 1;
+  position: relative;
+  height: 24px;
+  background-color: #ecf0f1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.distribution-count {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .reports-container {
+    padding: 1rem;
+  }
+  
+  .filters-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .jobs-breakdown {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-analysis {
+    grid-template-columns: 1fr;
+  }
+  
+  .analysis-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .reports-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .filters-section {
+    padding: 1rem;
+  }
+  
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .report-results {
+    padding: 1rem;
+  }
+  
+  .export-options {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .export-options select,
+  .export-btn {
+    width: 100%;
+  }
+  
+  .candidates-table {
+    font-size: 0.9rem;
+  }
+  
+  .candidates-table th,
+  .candidates-table td {
+    padding: 0.75rem;
+  }
+  
+  .job-breakdown-card,
+  .skill-category,
+  .analysis-section {
+    padding: 1rem;
+  }
+  
+  .skill-name,
+  .distribution-label {
+    flex: 0 0 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.6rem;
+  }
+  
+  .job-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .candidates-table table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

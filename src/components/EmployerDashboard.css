@@ -1,0 +1,178 @@
+/* Add these styles to your existing EmployerDashboard.css file */
+
+/* AI Analysis Button */
+.ai-analyze-btn {
+  background-color: #6b46c1;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+  margin-right: 10px;
+}
+
+.ai-analyze-btn:hover {
+  background-color: #553c9a;
+}
+
+.ai-analyze-btn:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.ai-analyze-btn::before {
+  content: '🤖';
+  margin-right: 8px;
+}
+
+/* View Candidates Button */
+.view-candidates-button {
+  background-color: #4a5568;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  margin-right: 10px;
+}
+
+.view-candidates-button:hover {
+  background-color: #2d3748;
+}
+
+/* Application Badge */
+.application-badge {
+  display: inline-block;
+  background-color: #ebf8ff;
+  color: #3182ce;
+  font-size: 0.85rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* AI Analysis Preview */
+.ai-analysis-preview {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.ai-analysis-preview h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4a5568;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.ai-analysis-preview h5::before {
+  content: '🧠';
+  margin-right: 6px;
+}
+
+.analysis-summary {
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.skill-match-breakdown {
+  margin-top: 12px;
+}
+
+/* No Analysis Section */
+.no-analysis {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px dashed #e2e8f0;
+  text-align: center;
+}
+
+.no-analysis p {
+  color: #718096;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.analyze-candidate-btn {
+  background-color: #6b46c1;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.analyze-candidate-btn:hover {
+  background-color: #553c9a;
+}
+
+.analyze-candidate-btn:disabled {
+  background-color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+/* Match Score Styles */
+.match-score.none {
+  background-color: #cbd5e0;
+  color: #4a5568;
+}
+
+/* Detailed Evaluation Link */
+.action-btn.view-btn {
+  background-color: #4c51bf;
+}
+
+.action-btn.view-btn:hover {
+  background-color: #434190;
+}
+
+/* Candidate Actions */
+.candidate-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .candidates-header .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .ai-analyze-btn,
+  .view-candidates-button,
+  .refresh-btn,
+  .export-btn {
+    width: 100%;
+  }
+}

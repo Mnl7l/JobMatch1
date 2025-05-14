@@ -1,0 +1,41 @@
+/* src/components/NotFound.css */
+.not-found-container {
+    text-align: center;
+    padding: 3rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .not-found-container h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .not-found-container p {
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+  }
+  
+  .not-found-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .not-found-actions .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .not-found-actions .btn-primary {
+    background-color: #1e6091;
+    color: white;
+  }
+  
+  .not-found-actions .btn-outline {
+    border: 1px solid #1e6091;
+    color: #1e6091;
+  }

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/JobMatch.css">
+    <title>JobMatch - Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional Admin Panel Styles */
+        .admin-section {
+            padding: 4rem 0;
+            background-color: #f5f8fa;
+        }
+        
+        .admin-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .admin-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .admin-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .candidate-list {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .candidate-list th, .candidate-list td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .candidate-list th {
+            font-weight: 600;
+            color: #7f8c8d;
+            background-color: #f8f9fa;
+        }
+        
+        .candidate-list tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-badge.match {
+            background-color: #e8f7f0;
+            color: #27ae60;
+        }
+        
+        .status-badge.review {
+            background-color: #fef5e7;
+            color: #f39c12;
+        }
+        
+        .status-badge.reject {
+            background-color: #fdedec;
+            color: #e74c3c;
+        }
+        
+        .match-score {
+            font-weight: 600;
+        }
+        
+        .high-match {
+            color: #27ae60;
+        }
+        
+        .medium-match {
+            color: #f39c12;
+        }
+        
+        .low-match {
+            color: #e74c3c;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-button {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            background-color: #f5f8fa;
+            color: #7f8c8d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .action-button:hover {
+            background-color: #1e6091;
+            color: white;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e6091;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .page-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: white;
+            border: 1px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .page-button.active {
+            background-color: #1e6091;
+            color: white;
+            border-color: #1e6091;
+        }
+        
+        .page-button:hover:not(.active) {
+            background-color: #f5f8fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="asset/images/JobMatch1.jpg" alt="JobMatch Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="upload.html">Upload</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="admin.html" class="active">Admin Panel</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <!-- Auth buttons will be dynamically inserted here -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>Admin Dashboard</h3>
+                <p>Manage and review candidate applications</p>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalApplications">0</div>
+                    <div class="stat-label">Total Applications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="highMatches">0</div>
+                    <div class="stat-label">High Matches</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="mediumMatches">0</div>
+                    <div class="stat-label">Medium Matches</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="lowMatches">0</div>
+                    <div class="stat-label">Low Matches</div>
+                </div>
+            </div>
+            
+            <!-- Candidate List Card -->
+            <div class="admin-card">
+                <div class="admin-header">
+                    <div class="admin-title">Candidate Matches</div>
+                    <div class="admin-controls">
+                        <a href="#" class="btn btn-primary" id="exportReport">
+                            <i class="fas fa-download"></i> Export Report
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="jobFilter">Job Position</label>
+                        <select id="jobFilter" class="form-control">
+                            <option value="">All Positions</option>
+                            <option value="software_engineer">Software Engineer</option>
+                            <option value="data_scientist">Data Scientist</option>
+                            <option value="ux_designer">UX Designer</option>
+                            <option value="product_manager">Product Manager</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="matchFilter">Match Score</label>
+                        <select id="matchFilter" class="form-control">
+                            <option value="">All Scores</option>
+                            <option value="high">High Match (80%+)</option>
+                            <option value="medium">Medium Match (50-79%)</option>
+                            <option value="low">Low Match (<50%)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="statusFilter">Status</label>
+                        <select id="statusFilter" class="form-control">
+                            <option value="">All Status</option>
+                            <option value="match">Match</option>
+                            <option value="review">Review</option>
+                            <option value="reject">Reject</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label style="visibility: hidden;">Apply</label>
+                        <button class="btn btn-primary" id="applyFilters" style="width: 100%;">Apply Filters</button>
+                    </div>
+                </div>
+                
+                <!-- Candidate Table -->
+                <table class="candidate-list">
+                    <thead>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Job Position</th>
+                            <th>Match Score</th>
+                            <th>Top Skills</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="candidateTableBody">
+                        <!-- Table rows will be dynamically inserted here -->
+                    </tbody>
+                </table>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <div class="page-button"><i class="fas fa-angle-left"></i></div>
+                    <div class="page-button active">1</div>
+                    <div class="page-button">2</div>
+                    <div class="page-button">3</div>
+                    <div class="page-button"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h5>JobMatch</h5>
+                    <p>An AI-powered recruitment system designed to streamline the hiring process and match the right candidates with the right jobs.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="upload.html">Upload</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="admin.html">Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>For Employers</h5>
+                    <ul class="footer-links">
+                        <li><a href="post-job.html">Post a Job</a></li>
+                        <li><a href="search-candidates.html">Search Candidates</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 JobMatch. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
+        import { getCurrentUser } from './auth.js';
+        import { updateHeader } from './header.js';
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Update header auth status
+            updateHeader();
+            
+            // Check if user is authorized to access admin page
+            const { user, profile } = await getCurrentUser();
+            
+            if (!user) {
+                // User is not logged in, redirect to login
+                window.location.href = 'login.html?redirect=admin.html';
+                return;
+            }
+            
+            if (!profile || profile.role !== 'employer') {
+                // User is not an employer, redirect to home
+                alert('You must be an employer to access the admin panel');
+                window.location.href = 'home.html';
+                return;
+            }
+            
+            // User is authorized, initialize admin page
+            initAdminPage();
+            
+            function initAdminPage() {
+                // Load data from Supabase
+                loadCandidates();
+                loadStats();
+                
+                // Set up event listeners
+                document.getElementById('applyFilters').addEventListener('click', function() {
+                    loadCandidates();
+                });
+                
+                document.getElementById('exportReport').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    exportCandidateReport();
+                });
+                
+                // Setup pagination
+                const pageButtons = document.querySelectorAll('.page-button');
+                pageButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        if (!this.classList.contains('active') && !this.querySelector('i')) {
+                            document.querySelector('.page-button.active').classList.remove('active');
+                            this.classList.add('active');
+                            loadCandidates(parseInt(this.textContent));
+                        } else if (this.querySelector('i.fa-angle-left')) {
+                            const activePage = document.querySelector('.page-button.active');
+                            const prevPage = activePage.previousElementSibling;
+                            if (prevPage && !prevPage.querySelector('i')) {
+                                activePage.classList.remove('active');
+                                prevPage.classList.add('active');
+                                loadCandidates(parseInt(prevPage.textContent));
+                            }
+                        } else if (this.querySelector('i.fa-angle-right')) {
+                            const activePage = document.querySelector('.page-button.active');
+                            const nextPage = activePage.nextElementSibling;
+                            if (nextPage && !nextPage.querySelector('i')) {
+                                activePage.classList.remove('active');
+                                nextPage.classList.add('active');
+                                loadCandidates(parseInt(nextPage.textContent));
+                            }
+                        }
+                    });
+                });
+            }
+            
+            async function loadStats() {
+                try {
+                    // Get statistics from Supabase
+                    const { data: profiles, error: profilesError } = await supabase
+                        .from('profiles')
+                        .select('id')
+                        .eq('role', 'job_seeker');
+                    
+                    if (profilesError) throw profilesError;
+                    
+                    // Update the stats display
+                    document.getElementById('totalApplications').textContent = profiles.length;
+                    
+                    // For demo purposes, we'll set some random numbers for matches
+                    const highCount = Math.floor(profiles.length * 0.35);
+                    const mediumCount = Math.floor(profiles.length * 0.5);
+                    const lowCount = profiles.length - highCount - mediumCount;
+                    
+                    document.getElementById('highMatches').textContent = highCount;
+                    document.getElementById('mediumMatches').textContent = mediumCount;
+                    document.getElementById('lowMatches').textContent = lowCount;
+                } catch (error) {
+                    console.error('Error loading stats:', error.message);
+                }
+            }
+            
+            async function loadCandidates(page = 1) {
+                try {
+                    // Get filter values
+                    const jobPosition = document.getElementById('jobFilter').value;
+                    const matchScore = document.getElementById('matchFilter').value;
+                    const status = document.getElementById('statusFilter').value;
+                    
+                    // Clear table
+                    const tableBody = document.getElementById('candidateTableBody');
+                    tableBody.innerHTML = '';
+                    
+                    // Load real candidates from Supabase
+                    let query = supabase
+                        .from('profiles')
+                        .select('*')
+                        .eq('role', 'job_seeker');
+                    
+                    // Apply pagination
+                    const pageSize = 5;
+                    const from = (page - 1) * pageSize;
+                    const to = from + pageSize - 1;
+                    
+                    query = query.range(from, to);
+                    
+                    const { data: candidates, error } = await query;
+                    
+                    if (error) throw error;
+                    
+                    // If no candidates found
+                    if (candidates.length === 0) {
+                        tableBody.innerHTML = `
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 2rem;">
+                                    No candidates found. Adjust filters or add more candidates.
+                                </td>
+                            </tr>
+                        `;
+                        return;
+                    }
+                    
+                    // Add candidates to table
+                    candidates.forEach(candidate => {
+                        // Generate random match score and status for demo
+                        const matchScore = Math.floor(Math.random() * 100) + 1;
+                        let scoreClass, statusClass, statusText;
+                        
+                        if (matchScore >= 80) {
+                            scoreClass = 'high-match';
+                            statusClass = 'match';
+                            statusText = 'Match';
+                        } else if (matchScore >= 50) {
+                            scoreClass = 'medium-match';
+                            statusClass = 'review';
+                            statusText = 'Review';
+                        } else {
+                            scoreClass = 'low-match';
+                            statusClass = 'reject';
+                            statusText = 'Reject';
+                        }
+                        
+                        // Generate random skills based on role
+                        let skills = '';
+                        if (candidate.first_name.toLowerCase().includes('j')) {
+                            skills = 'JavaScript, React, Node.js';
+                        } else if (candidate.first_name.toLowerCase().includes('m')) {
+                            skills = 'Python, Machine Learning, SQL';
+                        } else if (candidate.first_name.toLowerCase().includes('e')) {
+                            skills = 'UI/UX Design, Figma, User Research';
+                        } else {
+                            skills = 'HTML, CSS, Project Management';
+                        }
+                        
+                        // Create row for each candidate
+                        const row = document.createElement('tr');
+                        row.dataset.id = candidate.id;
+                        row.innerHTML = `
+                            <td>${candidate.first_name} ${candidate.last_name}</td>
+                            <td>Software Engineer</td>
+                            <td><span class="match-score ${scoreClass}">${matchScore}%</span></td>
+                            <td>${skills}</td>
+                            <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <div class="action-button" data-action="view"><i class="fas fa-eye"></i></div>
+                                    <div class="action-button" data-action="download"><i class="fas fa-file-download"></i></div>
+                                    <div class="action-button" data-action="email"><i class="fas fa-envelope"></i></div>
+                                </div>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                    
+                    // Set up action buttons
+                    const actionButtons = document.querySelectorAll('.action-button');
+                    actionButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const action = this.getAttribute('data-action');
+                            const candidateId = this.closest('tr').dataset.id;
+                            
+                            if (action === 'view') {
+                                viewCandidate(candidateId);
+                            } else if (action === 'download') {
+                                downloadResume(candidateId);
+                            } else if (action === 'email') {
+                                emailCandidate(candidateId);
+                            }
+                        });
+                    });
+                } catch (error) {
+                    console.error('Error loading candidates:', error.message);
+                    const tableBody = document.getElementById('candidateTableBody');
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem; color: red;">
+                                Error loading candidates: ${error.message}
+                            </td>
+                        </tr>
+                    `;
+                }
+            }
+            
+            // Candidate action functions
+            function viewCandidate(id) {
+                alert('View candidate details: ' + id);
+                // In a real implementation, this would open a modal with candidate details
+            }
+            
+            function downloadResume(id) {
+                alert('Download resume: ' + id);
+                // In a real implementation, this would download the candidate's resume
+            }
+            
+            function emailCandidate(id) {
+                alert('Send email to candidate: ' + id);
+                // In a real implementation, this would open a compose email modal
+            }
+            
+            function exportCandidateReport() {
+                alert('Export candidate report');
+                // In a real implementation, this would generate and download a report
+            }
+        });
+    </script>
+</body>
+</html>
